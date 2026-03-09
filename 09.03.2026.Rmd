@@ -1,0 +1,37 @@
+```{r}
+#niezbędne pakiety
+packages <- c(
+  "vcd", 
+  "OpenMx", 
+  "bmem", 
+  "ca", 
+  "MASS", 
+  "expm", 
+  "svd", 
+  "psych", 
+  "ggplot2", 
+  "ggrepel", 
+  "readxl"
+)
+
+new_packages <- packages[!(packages %in% installed.packages()[, "Package"])]
+
+if(length(new_packages)) install.packages(new_packages)
+
+
+
+library(vcd)
+library(OpenMx)
+library(bmem)
+library(ca)
+library(MASS)
+library(expm)
+library(svd)
+library(psych)
+library(ggplot2)
+library(ggrepel)
+library(readxl)
+
+
+```
+

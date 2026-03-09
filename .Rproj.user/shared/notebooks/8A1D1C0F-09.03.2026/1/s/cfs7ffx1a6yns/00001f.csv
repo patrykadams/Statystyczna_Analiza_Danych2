@@ -1,0 +1,18 @@
+"0","library(psych)
+"
+"2","G2;H2;Ostrzeżenieh: pakiet ‘psych’ został zbudowany w wersji R 4.5.2g
+"
+"2","G3;
+Dołączanie pakietu: ‘psych’
+
+g"
+"2","G3;Następujący obiekt został zakryty z ‘package:OpenMx’:
+
+    tr
+
+g"
+"2","G3;Następujące obiekty zostały zakryte z ‘package:ggplot2’:
+
+    %+%, alpha
+
+g"
