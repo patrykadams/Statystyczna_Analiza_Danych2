@@ -121,6 +121,41 @@ assoc(dane_macierz, shade = TRUE, main = "Wykres asocjacji (Reszty Pearsona)")
 ```
 
 
+
+
+```{r}
+# --- Dane ---
+dane <- matrix(c(
+  326, 38, 241, 110, 3,    # Niebieskie
+  688, 116, 584, 188, 4,   # Jasne
+  343, 84, 909, 412, 26,   # Zielone
+  98, 48, 403, 681, 85     # Ciemne
+), nrow = 4, byrow = TRUE)
+
+rownames(dane) <- c("Niebieskie", "Jasne", "Zielone", "Ciemne")
+colnames(dane) <- c("Blondyni", "Rudzi", "Szatyni", "Ciemnowłosi", "Brunaci")
+
+# --- PROFILE WIERSZY (Row Profiles) ---
+# Odpowiadają na pytanie: "Jaki procent osób o danych oczach ma konkretny kolor włosów?"
+profile_wierszy <- prop.table(dane, margin = 1)
+
+# --- PROFILE KOLUMN (Column Profiles) ---
+# Odpowiadają na pytanie: "Jaki procent osób o danych włosach ma konkretny kolor oczu?"
+profile_kolumn <- prop.table(dane, margin = 2)
+
+# --- WYŚWIETLENIE WYNIKÓW ---
+cat("--- PROFILE WIERSZY (Struktura włosów w grupach oczu) ---\n")
+print(round(profile_wierszy, 3))
+
+cat("\n--- PROFILE KOLUMN (Struktura oczu w grupach włosów) ---\n")
+print(round(profile_kolumn, 3))
+
+# --- PROFIL PRZECIĘTNY (Average Profile / Masses) ---
+cat("\n--- PROFIL PRZECIĘTNY WIERSZY (Masy Kolumn) ---\n")
+print(round(colSums(dane) / sum(dane), 3))
+
+cat("\n--- PROFIL PRZECIĘTNY KOLUMN (Masy Wierszy) ---\n")
+print(round(rowSums(dane) / sum(dane), 3))
 ```
 
 

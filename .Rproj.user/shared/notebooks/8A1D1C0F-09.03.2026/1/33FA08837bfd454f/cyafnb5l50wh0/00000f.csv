@@ -1,0 +1,58 @@
+"0","# --- Dane ---"
+"0","dane <- matrix(c("
+"0","  326, 38, 241, 110, 3,    # Niebieskie"
+"0","  688, 116, 584, 188, 4,   # Jasne"
+"0","  343, 84, 909, 412, 26,   # Zielone"
+"0","  98, 48, 403, 681, 85     # Ciemne"
+"0","), nrow = 4, byrow = TRUE)"
+"0",""
+"0","rownames(dane) <- c(""Niebieskie"", ""Jasne"", ""Zielone"", ""Ciemne"")"
+"0","colnames(dane) <- c(""Blondyni"", ""Rudzi"", ""Szatyni"", ""Ciemnowłosi"", ""Brunaci"")"
+"0",""
+"0","# --- PROFILE WIERSZY (Row Profiles) ---"
+"0","# Odpowiadają na pytanie: ""Jaki procent osób o danych oczach ma konkretny kolor włosów?"""
+"0","profile_wierszy <- prop.table(dane, margin = 1)"
+"0",""
+"0","# --- PROFILE KOLUMN (Column Profiles) ---"
+"0","# Odpowiadają na pytanie: ""Jaki procent osób o danych włosach ma konkretny kolor oczu?"""
+"0","profile_kolumn <- prop.table(dane, margin = 2)"
+"0",""
+"0","# --- WYŚWIETLENIE WYNIKÓW ---"
+"0","cat(""--- PROFILE WIERSZY (Struktura włosów w grupach oczu) ---\n"")"
+"1","--- PROFILE WIERSZY (Struktura włosów w grupach oczu) ---
+"
+"0","print(round(profile_wierszy, 3))"
+"1","           Blondyni Rudzi Szatyni Ciemnowłosi Brunaci
+Niebieskie    0.454 0.053   0.336       0.153   0.004
+Jasne         0.435 0.073   0.370       0.119   0.003
+Zielone       0.193 0.047   0.512       0.232   0.015
+Ciemne        0.075 0.037   0.306       0.518   0.065
+"
+"0","cat(""\n--- PROFILE KOLUMN (Struktura oczu w grupach włosów) ---\n"")"
+"1","
+--- PROFILE KOLUMN (Struktura oczu w grupach włosów) ---
+"
+"0","print(round(profile_kolumn, 3))"
+"1","           Blondyni Rudzi Szatyni Ciemnowłosi Brunaci
+Niebieskie    0.224 0.133   0.113       0.079   0.025
+Jasne         0.473 0.406   0.273       0.135   0.034
+Zielone       0.236 0.294   0.425       0.296   0.220
+Ciemne        0.067 0.168   0.189       0.490   0.720
+"
+"0","# --- PROFIL PRZECIĘTNY (Average Profile / Masses) ---"
+"0","cat(""\n--- PROFIL PRZECIĘTNY WIERSZY (Masy Kolumn) ---\n"")"
+"1","
+--- PROFIL PRZECIĘTNY WIERSZY (Masy Kolumn) ---
+"
+"0","print(round(colSums(dane) / sum(dane), 3))"
+"1","   Blondyni       Rudzi     Szatyni Ciemnowłosi     Brunaci 
+      0.270       0.053       0.397       0.258       0.022 
+"
+"0","cat(""\n--- PROFIL PRZECIĘTNY KOLUMN (Masy Wierszy) ---\n"")"
+"1","
+--- PROFIL PRZECIĘTNY KOLUMN (Masy Wierszy) ---
+"
+"0","print(round(rowSums(dane) / sum(dane), 3))"
+"1","Niebieskie      Jasne    Zielone     Ciemne 
+     0.133      0.293      0.329      0.244 
+"
