@@ -1,0 +1,19 @@
+"0","# --- OBLICZANIE WEKTORA MAS WIERSZY ---"
+"0",""
+"0","# 1. Suma całkowita (N)"
+"0","N <- sum(dane_macierz)"
+"0",""
+"0","# 2. Sumy wierszy (liczba osób z danym kolorem oczu)"
+"0","sumy_wierszy <- rowSums(dane_macierz)"
+"0",""
+"0","# 3. Wektor mas wierszy (r)"
+"0","# Formuła: r_i = n_i. / N"
+"0","masy_wierszy <- sumy_wierszy / N"
+"0",""
+"0","cat(""--- WEKTOR MAS WIERSZY (Row Masses) ---\n"")"
+"1","--- WEKTOR MAS WIERSZY (Row Masses) ---
+"
+"0","print(round(masy_wierszy, 4))"
+"1","Niebieskie      Jasne    Zielone     Ciemne 
+    0.1333     0.2933     0.3293     0.2441 
+"

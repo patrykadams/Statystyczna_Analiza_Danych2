@@ -1,0 +1,42 @@
+"0",""
+"0","# --- ANALIZA KORESPONDENCJI (CA) ---"
+"0",""
+"0","# CA służy do graficznego przedstawienia struktury zależności odrzuconej w teście H0."
+"0","# Pozwala sprawdzić, które konkretne kategorie (np. Blond i Niebieskie) współwystępują najczęściej."
+"0",""
+"0",""
+"0","wynik_ca <- ca(dane_macierz)"
+"0","summary(wynik_ca)"
+"2","G2;H2;Warningh in abbreviate(cnames.temp, 4) :
+  'abbreviate' użyte ze znakami nie będącymi ASCIIg
+"
+"1","
+Principal inertias (eigenvalues):
+
+ dim    value      %   cum%   scree plot               
+ 1      0.199245  86.6  86.6  **********************   
+ 2      0.030087  13.1  99.6  ***                      
+ 3      0.000859   0.4 100.0                           
+        -------- -----                                 
+ Total: 0.230191 100.0                                 
+
+
+Rows:
+    name   mass  qlt  inr    k=1 cor ctr    k=2 cor ctr  
+1 | Nbsk |  133  979  111 |  400 836 107 |  165 143 121 |
+2 | Jasn |  293  995  259 |  441 956 286 |   88  39  76 |
+3 | Ziln |  329  999   88 |  -34  18   2 | -245 981 657 |
+4 | Cimn |  244 1000  543 | -703 965 605 |  134  35 145 |
+"
+"1","
+Columns:
+    name   mass  qlt  inr     k=1 cor ctr    k=2 cor ctr  
+1 | Blnd |  270 1000  383 |   544 907 401 |  174  93 271 |
+2 | Rudz |   53  803   16 |   233 770  14 |   48  33   4 |
+3 | Szty |  397 1000   78 |    42  39   4 | -208 961 572 |
+4 | Cmnł |  258 1000  401 |  -589 969 449 |  104  30  93 |
+5 | Brnc |   22  998  122 | -1094 934 132 |  286  64  60 |
+"
+"0","# Wizualizacja - Mapa percepcji"
+"0","# Im bliżej siebie leżą punkty z różnych kategorii, tym silniejsza jest ich zależność (asocjacja)."
+"0","plot(wynik_ca, main = ""Mapa korespondencji: Oczy vs Włosy"")"

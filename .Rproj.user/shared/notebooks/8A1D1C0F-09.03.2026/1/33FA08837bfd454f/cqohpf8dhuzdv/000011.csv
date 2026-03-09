@@ -1,0 +1,7 @@
+"0",""
+"0",""
+"0",""
+"0","# Dodatkowy wykres asocjacji z pakietu vcd (wizualizacja reszt Pearsona)"
+"0","# Niebieskie pola = częstość większa niż oczekiwana przy H0 (zależność dodatnia)"
+"0","# Czerwone pola = częstość mniejsza niż oczekiwana przy H0 (zależność ujemna)"
+"0","assoc(dane_macierz, shade = TRUE, main = ""Wykres asocjacji (Reszty Pearsona)"")"

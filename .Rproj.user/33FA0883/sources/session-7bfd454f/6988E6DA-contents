@@ -70,6 +70,32 @@ test_chi2 <- chisq.test(dane_macierz)
 # Jeśli p-value < 0.05 -> Odrzucamy H0 na rzecz H1.
 # Jeśli p-value >= 0.05 -> Nie ma podstaw do odrzucenia H0.
 
+
+
+```
+
+
+
+
+```{r}
+# --- OBLICZANIE WEKTORA MAS WIERSZY ---
+
+# 1. Suma całkowita (N)
+N <- sum(dane_macierz)
+
+# 2. Sumy wierszy (liczba osób z danym kolorem oczu)
+sumy_wierszy <- rowSums(dane_macierz)
+
+# 3. Wektor mas wierszy (r)
+# Formuła: r_i = n_i. / N
+masy_wierszy <- sumy_wierszy / N
+
+cat("--- WEKTOR MAS WIERSZY (Row Masses) ---\n")
+print(round(masy_wierszy, 4))
+```
+
+```{r}
+
 # --- ANALIZA KORESPONDENCJI (CA) ---
 
 # CA służy do graficznego przedstawienia struktury zależności odrzuconej w teście H0.
@@ -89,6 +115,10 @@ plot(wynik_ca, main = "Mapa korespondencji: Oczy vs Włosy")
 # Niebieskie pola = częstość większa niż oczekiwana przy H0 (zależność dodatnia)
 # Czerwone pola = częstość mniejsza niż oczekiwana przy H0 (zależność ujemna)
 assoc(dane_macierz, shade = TRUE, main = "Wykres asocjacji (Reszty Pearsona)")
+
+
+
+```
 
 
 ```
