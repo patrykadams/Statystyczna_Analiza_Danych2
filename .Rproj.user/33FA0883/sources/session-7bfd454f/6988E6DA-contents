@@ -14,9 +14,9 @@ packages <- c(
   "readxl"
 )
 
-new_packages <- packages[!(packages %in% installed.packages()[, "Package"])]
+#new_packages <- packages[!(packages %in% installed.packages()[, "Package"])]
 
-if(length(new_packages)) install.packages(new_packages)
+#if(length(new_packages)) install.packages(new_packages)
 
 
 
@@ -34,4 +34,63 @@ library(readxl)
 
 
 ```
+
+
+```{r}
+#
+dane_macierz <- matrix(c(
+  326, 38, 241, 110, 3,    # Niebieskie
+  688, 116, 584, 188, 4,   # Jasne
+  343, 84, 909, 412, 26,   # Zielone
+  98, 48, 403, 681, 85     # Ciemne
+), nrow = 4, byrow = TRUE)
+
+# Dodanie nazw wierszy i kolumn dla czytelności
+
+rownames(dane_macierz) <- c("Niebieskie", "Jasne", "Zielone", "Ciemne")
+colnames(dane_macierz) <- c("Blondyni", "Rudzi", "Szatyni", "Ciemnowłosi", "Brunaci")
+
+print(dane_macierz)
+```
+
+
+
+```{r}
+# Hipoteza Zerowa (H0): Kolor oczu i kolor włosów są zmiennymi NIEZALEŻNYMI. 
+# (Oznacza to, że kolor włosów nie wpływa na prawdopodobieństwo posiadania konkretnego koloru oczu).
+
+# Hipoteza Alternatywna (H1): Kolor oczu i kolor włosów są od siebie ZALEŻNE. 
+# (Istnieje statystycznie istotny związek między tymi cechami).
+
+
+test_chi2 <- chisq.test(dane_macierz)
+
+
+# Decyzja statystyczna (przy alfa = 0.05):
+# Jeśli p-value < 0.05 -> Odrzucamy H0 na rzecz H1.
+# Jeśli p-value >= 0.05 -> Nie ma podstaw do odrzucenia H0.
+
+# --- ANALIZA KORESPONDENCJI (CA) ---
+
+# CA służy do graficznego przedstawienia struktury zależności odrzuconej w teście H0.
+# Pozwala sprawdzić, które konkretne kategorie (np. Blond i Niebieskie) współwystępują najczęściej.
+
+
+wynik_ca <- ca(dane_macierz)
+summary(wynik_ca)
+
+# Wizualizacja - Mapa percepcji
+# Im bliżej siebie leżą punkty z różnych kategorii, tym silniejsza jest ich zależność (asocjacja).
+plot(wynik_ca, main = "Mapa korespondencji: Oczy vs Włosy")
+
+
+
+# Dodatkowy wykres asocjacji z pakietu vcd (wizualizacja reszt Pearsona)
+# Niebieskie pola = częstość większa niż oczekiwana przy H0 (zależność dodatnia)
+# Czerwone pola = częstość mniejsza niż oczekiwana przy H0 (zależność ujemna)
+assoc(dane_macierz, shade = TRUE, main = "Wykres asocjacji (Reszty Pearsona)")
+
+
+```
+
 
